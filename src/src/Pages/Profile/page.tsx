@@ -61,6 +61,14 @@ export default function Profile() {
     if(profile) profile.keyboardId = parseInt(e);
   }
 
+  function downloadConfig(){
+
+  }
+
+  function uploadConfig(){
+    
+  }
+
   if (loading) return <Spinner />;
 
   return (

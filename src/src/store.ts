@@ -39,6 +39,7 @@ export const useUserStore = create(
           }
 
           const data: any = await user_response.json();
+          
           set({
             loading: false,
             IsLoggedIn: data.isLoggedIn
