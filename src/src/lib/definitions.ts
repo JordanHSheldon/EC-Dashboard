@@ -14,7 +14,7 @@ export type cred = {
 
 export type Profile = {
   id: string,
-  userName: string,
+  username: string,
   avatar: string | undefined;
   mouseId: number,
   mousepadId: number,

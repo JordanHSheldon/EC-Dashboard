@@ -31,7 +31,7 @@ export default function Players() {
   };
 
   const filteredData = data?.filter((profile) => {
-    return profile?.userName?.toLowerCase().includes(filters.name.toLowerCase());
+    return profile?.username?.toLowerCase().includes(filters.name.toLowerCase());
   });
 
   async function GetPaginatedUsers(offset: number, limit: number): Promise<void> {
@@ -80,8 +80,8 @@ export default function Players() {
       <div className="players-flex-Box">
         {filteredData.map((profile) => (
             <ProfileCard id={profile.id}
-                        key={profile.userName}
-                        userName={profile.userName} 
+                        key={profile.username}
+                        username={profile.username} 
                         mouseId={profile.mouseId} 
                         mousepadId={profile.mousepadId} 
                         keyboardId={profile.keyboardId}

@@ -61,14 +61,6 @@ export default function Profile() {
     if(profile) profile.keyboardId = parseInt(e);
   }
 
-  function downloadConfig(){
-
-  }
-
-  function uploadConfig(){
-    
-  }
-
   if (loading) return <Spinner />;
 
   return (
@@ -76,8 +68,8 @@ export default function Profile() {
       <div className="profile-header">
           <div className="profile-picture">
             <img src={profile?.avatar}></img>
-            <p>{profile?.userName}</p>
           </div> 
+            <h2>{profile?.username}</h2>
       </div>
       <div>
         <div className="tabs">

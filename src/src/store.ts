@@ -45,7 +45,7 @@ export const useUserStore = create(
             IsLoggedIn: data.isLoggedIn
           });
 
-          await get().getProfile();
+          get().getProfile();
         } catch (error) {
           set({
             loading: false,

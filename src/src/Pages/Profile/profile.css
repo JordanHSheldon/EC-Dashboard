@@ -5,7 +5,7 @@
 }
 
 .profile-header{
-  display:block;
+  display:flex;
   justify-content: "center";
   align-items:"center";
 }
@@ -37,6 +37,7 @@
   font-weight: 500;
   border-bottom: .2rem solid transparent;
   transition: 0.3s;
+  color: white;
 }
 
 .tab:hover {

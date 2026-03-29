@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Peripheral, Profile } from "../../lib/definitions";
 import Spinner from "../../Components/Spinner/spinner";
 import { useNavigate } from "react-router-dom";
-// import './profile.css'
+import './otherProfile.css'
 
 export default function OtherProfile() {
     const [profile,setProfile] = useState<Profile | undefined>(undefined);
@@ -18,7 +18,6 @@ export default function OtherProfile() {
             setLoading(true);
             await Promise.all([GetPeripherals(), GetProfileByUsernName()]);
             setLoading(false);
-            if(profile === undefined) navigate("/")
         };
         load();
     }, [userName]);
@@ -43,6 +42,7 @@ export default function OtherProfile() {
             }
 
             const Profile: Profile | undefined = await response.json();
+            console.log(profile)
             setProfile(Profile);
         } catch (error) {
             console.error('Fetch error:', error);
@@ -77,33 +77,33 @@ export default function OtherProfile() {
         <div className="other-profile-header">
             <div className="other-profile-picture">
                 <img src={profile?.avatar}></img>
-                <p>{profile?.userName}</p>
+                <h2>{profile?.username}</h2>
             </div> 
         </div>
         <div>
             <div className="tabs">
-            <div className={tab === 1 ? "tab active" : "tab"} onClick={()=>toggleTab(1)}>Configs</div>
-            <div className={tab === 2 ? "tab active" : "tab"} onClick={()=>toggleTab(2)}>Stats</div>
+                <div className={tab === 1 ? "tab active" : "tab"} onClick={()=>toggleTab(1)}>Configs</div>
+                <div className={tab === 2 ? "tab active" : "tab"} onClick={()=>toggleTab(2)}>Stats</div>
             </div>
 
             <div className={tab === 1 ? "tab-content active" : "tab-content"}>
-            <div className="profile-peripherals">
-                <div className="profile-peripheral">
-                    <p>Mouse</p>
-                    <p>{peripherals?.filter(p => p.id === profile?.mouseId)?.map(p => p.name)}</p>
+                <div className="profile-peripherals">
+                    <div className="profile-peripheral">
+                        <p>Mouse</p>
+                        <p>{peripherals?.filter(p => p.id === profile?.mouseId)?.map(p => p.name)}</p>
+                    </div>
+                    <div className="profile-peripheral">
+                        <p>Mousepad</p>
+                        <p>{peripherals?.filter(p => p.id === profile?.mousepadId)?.map(p => p.name)}</p>
+                    </div>
+                    <div className="profile-peripheral">
+                        <p>Keyboard</p>
+                        <p>{peripherals?.filter(p => p.id === profile?.keyboardId)?.map(p => p.name)}</p>
+                    </div>
                 </div>
-                <div className="profile-peripheral">
-                    <p>Mousepad</p>
-                    <p>{peripherals?.filter(p => p.id === profile?.mousepadId)?.map(p => p.name)}</p>
-                </div>
-                <div className="profile-peripheral">
-                <p>Keyboard</p>
-                <p>{peripherals?.filter(p => p.id === profile?.keyboardId)?.map(p => p.name)}</p>
-                </div>
-            </div>
             </div>
             <div className={tab === 2 ? "tab-content active" : "tab-content"}>
-            <p>Statistics coming soon...</p>
+                <p>Statistics coming soon...</p>
             </div>
         </div>
         </div>
